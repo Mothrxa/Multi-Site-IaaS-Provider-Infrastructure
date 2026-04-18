@@ -1,0 +1,23 @@
+Autonamous SDN with AI-Based traffic and anomaly detection
+
+traditional infrastrcture -> SDN -> AI-driven SDN (automation + control + ai) 
+
+- define the control loop of the ai (what ai changes), like INPUT -> DECISION -> ACTION -> RESULT
+
+	- INPUT: What does AI see ? 
+	- DECISION: What does AI decide ?
+	- ACTION: What changes in the network ?
+	- RESULT: What improves ?
+	
+- Add 1-3 use cases to demonstrate and explain how this aproach helps and reduce time consuming
+- the entreprise's services (VPN, Cloud, Portal, Servers ...) are used to generate traffic for AI-SDN
+
+- This project evaluates the evolution of enterprise network management from traditional automation-based approaches 
+to SDN and further to AI-driven SDN, demonstrating how intelligence enhances adaptability and performance in real-world scenarios.
+
+- the ai will be demonstrated in congestion detection and dynamic rerouting
+---
+Use cases: 
+- Traffic Optimization
+- Anomaly aware
+

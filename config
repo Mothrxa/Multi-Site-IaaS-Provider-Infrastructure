@@ -1,0 +1,36 @@
+10.0.0.0/8
+203.0.113.0/28
+
+/28: 255.255.255.240
+
+2⁴ - 2 = 14 addresses 
+
+LB: 203.0.113.1
+WBS1: 203.0.113.
+
+ISP-Public:
+203.0.113.1/30
+203.0.113.5/30
+
+Firewall-Public
+203.0.113.2/30
+203.0.113.6/30
+
+
+Redundancy:
+LACP on switchtes 
+
+HSRP on routers, firewalls and dmz_l3-switches
+RSTP
+VLAN
+LAN_ROAS
+DMZ_SVI
+
+Firewall_Nat
+Firewall_ACL
+
+DMZ_NIC-Bonding
+
+DUAL_Homed connection to ISP
+
+meet the cloud computing's characteristics
