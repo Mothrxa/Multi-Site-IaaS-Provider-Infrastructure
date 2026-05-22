@@ -1,0 +1,12 @@
+- A redundant architecture ensures that:
+	➢ No single failure can bring the system down (no single point of failure, or SPOF).
+	➢ Service continuity is preserved through failover mechanisms.
+	➢ Maintenance or upgrades can occur without service interruption.
+	➢ The system can detect, isolate, and recover from faults automatically.
+	
+- Redundancy embodies the principle “design for failure” , assuming that every hardware, software, and network element will eventually fail
+
+- 3dna 	
+	- Hardware Redundancy (NIC Bonding, Dual PSUs) 
+	- Network Redundancy (Duplicate paths, HSRP, LACP, ECMP Routing) 
+	- Data Redundancy (DB Replication) 

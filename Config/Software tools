@@ -1,0 +1,26 @@
+- DHCP: ISC Dhcp 
+- DNS: ISC Bind
+- SNMP: LibreNMS
+- AAA: FreeRadius
+- Syslog: Graylog
+- SMTP: Postfix
+- IMAP: Dovecot
+- 
+
+- Internet/WAN Link: Tailscale
+- Infrastructure : GNS3/Containerlab
+- Routers/Switches : Cisco IOSv/IOSvL2
+- Firewall+(IDS, DNS/IP blocking, Routing) : Pfsense+(Suricata, pfBlockerNG, frr)
+- Servers : Ubuntu-Server
+- IT Admin : RHEL
+- Hosts : Windows
+- Automation : Ansible, Terraform, Git
+
+
+- Source of Truth : Netbox (IPAM documentation (used in phase 2)) -- Documentation: - Netbox: https://netbox.readthedocs.io
+
+- Terraform tools: VMs(libvirt) - Containers(Docker)
+
+---
+- Router image: vios-adventerprisek9-m.SPA.159-3.M6
+- Switch image: viosl2-adventerprisek9-m.ssa.high_iron_20200929

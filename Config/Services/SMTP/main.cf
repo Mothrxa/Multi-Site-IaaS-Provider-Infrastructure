@@ -1,0 +1,63 @@
+-- /etc/postfix/main.cf --
+# ========================
+# BASIC IDENTITY
+# ========================
+myhostname = mail.pfe2627.xyz
+mydomain = pfe2627.xyz
+myorigin = $mydomain
+
+# ========================
+# NETWORK SETTINGS
+# ========================
+inet_interfaces = all
+inet_protocols = ipv4
+
+# ========================
+# LOCAL DELIVERY
+# ========================
+mydestination = $myhostname, localhost.$mydomain, localhost
+
+# ========================
+# TRUSTED NETWORKS
+# ========================
+mynetworks = 127.0.0.0/8, 10.0.10.0/24, 10.0.20.0/24, 10.0.30.0/24
+
+# ========================
+# RELAY
+# ========================
+relayhost = [smtp-relay.brevo.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = noanonymous
+smtp_tls_security_level = encrypt
+smtpd_relay_restrictions = permit_mynetworks permit_sasl_authenticated defer_unauth_destination
+
+# ========================
+# TLS
+# ========================
+smtpd_tls_security_level = may
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtp_tls_CApath=/etc/ssl/certs
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+
+# ========================
+# MISC
+# ========================
+alias_maps = hash:/etc/aliases
+alias_database = hash:/etc/aliases
+mailbox_size_limit = 0
+recipient_delimiter = +
+compatibility_level = 3.6
+
+# ========================
+# VIRTUAL MAILBOX
+# ========================
+virtual_mailbox_domains = pfe2627.xyz
+virtual_mailbox_base = /var/mail/vmail
+virtual_mailbox_maps = hash:/etc/postfix/vmailbox
+virtual_minimum_uid = 100
+virtual_uid_maps = static:5000
+virtual_gid_maps = static:5000

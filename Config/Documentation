@@ -1,0 +1,11 @@
+- DHCP: https://www.isc.org/dhcp
+- DNS: https://www.isc.org/bind
+- Postfix: https://www.postfix.org/BASIC_CONFIGURATION_README.html
+- Dovecot: https://doc.dovecot.org/2.4.3/
+- LibreNMS: https://docs.librenms.org/Installation/Install-LibreNMS
+- Graylog: https://go2docs.graylog.org/current/downloading_and_installing_graylog/ubuntu_installation.htm
+- FreeRadius: 
+- pfSense: https://docs.netgate.com/pfsense/en/latest
+- Ansible: https://docs.ansible.com/
+- Terraform: https://developer.hashicorp.com/terraform
+- Containerlab: https://containerlab.dev/manual/dev/doc

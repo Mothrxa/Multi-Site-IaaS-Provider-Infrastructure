@@ -1,0 +1,23 @@
+-- /var/cache/bind/db.pfe2627.xyz --
+$ORIGIN .
+$TTL 604800     ; 1 week
+pfe2627.xyz             IN SOA  ns1.pfe2627.xyz. admin.pfe2627.xyz. (
+                                16         ; serial
+                                604800     ; refresh (1 week)
+                                86400      ; retry (1 day)
+                                2419200    ; expire (4 weeks)
+                                604800     ; minimum (1 week)
+                                )
+                        NS      ns1.pfe2627.xyz.
+                        MX      10 mail.pfe2627.xyz.
+$ORIGIN pfe2627.xyz.
+Server			A	10.0.40.2
+WebServer               A       10.0.1.2
+Firewall                A       10.0.255.1
+DMZ-SW                  A       10.0.255.6
+R1                      A       10.0.255.9
+DSW                     A       10.0.9.1
+ASW1                    A       10.0.9.2
+ASW2                    A       10.0.9.3
+ASW3                    A       10.0.9.4
+ASW4                    A       10.0.9.5

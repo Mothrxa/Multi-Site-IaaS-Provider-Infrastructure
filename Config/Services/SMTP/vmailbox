@@ -1,0 +1,4 @@
+-- /etc/postfix/vmailbox
+# Users are added automatically based on hosts in the network
+alice@pfe2627.xyz    pfe2627.xyz/alice/Maildir/
+bob@pfe2627.xyz      pfe2627.xyz/bob/Maildir/

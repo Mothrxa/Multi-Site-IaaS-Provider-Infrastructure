@@ -1,0 +1,32 @@
+-- /etc/bind/named.conf.local --
+include "/etc/bind/dhcp.key";
+
+zone "pfe2627.xyz" {
+    type master;
+    file "/var/cache/bind/db.pfe2627.xyz";
+    allow-update { key dhcp-key; };
+};
+
+zone "10.0.10.in-addr.arpa" {
+    type master;
+    file "/var/cache/bind/db.10.0.10";
+    allow-update { key dhcp-key; };
+};
+
+zone "10.0.20.in-addr.arpa" {
+    type master;
+    file "/var/cache/bind/db.10.0.20";
+    allow-update { key dhcp-key; };
+};
+
+zone "10.0.30.in-addr.arpa" {
+    type master;
+    file "/var/cache/bind/db.10.0.30";
+    allow-update { key dhcp-key; };
+};
+
+zone "10.0.90.in-addr.arpa" {
+    type master;
+    file "/var/cache/bind/db.10.0.90";
+    allow-update { key dhcp-key; };
+};

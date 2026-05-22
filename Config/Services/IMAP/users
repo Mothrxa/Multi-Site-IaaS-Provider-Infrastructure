@@ -1,0 +1,5 @@
+-- /etc/dovecot/users --
+## Hashes are generated with `sudo doveadm pw -s SHA512-CRYPT`
+## Lock down the file with `sudo chown root:dovecot /etc/dovecot/users && sudo chmod 640 /etc/dovecot/users`
+alice@pfe2627.xyz:{SHA512-CRYPT}<Hash>
+bob@pfe2627.xyz:{SHA512-CRYPT}<Hash>

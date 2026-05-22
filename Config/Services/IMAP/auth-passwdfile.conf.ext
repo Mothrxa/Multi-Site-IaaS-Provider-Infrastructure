@@ -1,0 +1,11 @@
+-- /etc/dovecot/conf.d/auth-passwdfile.conf.ext -- 
+# Dovecot password file authentication configuration for IMAP service
+passdb {
+  driver = passwd-file
+  args = scheme=SHA512-CRYPT username_format=%u /etc/dovecot/users
+}
+
+userdb {
+  driver = static
+  args = uid=vmail gid=vmail home=/var/mail/vmail/%d/%n
+}

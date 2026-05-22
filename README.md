@@ -1,11 +1,13 @@
 # Entreprise Network Infrastructre Simulation
 - Architecture: 
-	- External Zone (Internet, Clients)
-	- DMZ (Public services)
-	- Internal Network
-	- Data Center / Cloud Zone
+	- HQ Branch
+		- External Zone (Internet, Clients)
+		- DMZ (Public services)
+		- Internal Network
+		- Data Center
+	- Cloud Branch
+		- Data Center
 	
 - Core Services: 
-	- VPN
 	- Internal Portal 
 	- Cloud Simulation

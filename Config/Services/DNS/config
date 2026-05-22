@@ -1,0 +1,8 @@
+- Forward DNS zone
+- Reverse DNS zones
+- Recursive DNS (/etc/bind/named.conf.options)
+- TSIG Key (DHCP ↔ DNS authentication) (/etc/bind/dhcp.key)
+- Dynamic DNS (DDNS)
+
+mv /etc/bind/db.* /var/cache/bind/
+tsig-keygen -a hmac-sha256 dhcp-update (generates TSIG Key - paste the output in /etc/bind/dhcp.key)

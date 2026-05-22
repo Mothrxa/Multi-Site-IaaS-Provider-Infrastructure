@@ -1,0 +1,14 @@
+sudo postmap /etc/postfix/vmailbox :: postmap takes a Postfix text lookup file and builds a searchable database (.db file)
+                                      that Postfix uses for things like aliases, access rules, and routing.
+
+# Create a system user to OWN all mail (not for login)
+sudo groupadd -g 5000 vmail
+sudo useradd -g vmail -u 5000 vmail -d /var/mail/vmail -s /usr/sbin/nologin
+sudo mkdir -p /var/mail/vmail
+sudo chown -R vmail:vmail /var/mail/vmail
+
+# for each host created do 
+sudo mkdir -p /var/mail/vmail/pfe2627.xyz/$USER/Maildir/{cur,new,tmp}
+
+sudo chown root:dovecot /etc/dovecot/users
+sudo chmod 640 /etc/dovecot/users

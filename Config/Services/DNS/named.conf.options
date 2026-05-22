@@ -1,0 +1,20 @@
+-- /etc/bind/named.conf.options --
+options {
+        directory "/var/cache/bind";
+
+        recursion yes;
+        allow-query { any; 
+        };
+
+        forwarders {
+                1.1.1.1;
+                8.8.8.8;
+        };
+
+        listen-on { any; 
+        };
+
+        dnssec-validation no;
+        listen-on-v6 { none; 
+        };
+    };
