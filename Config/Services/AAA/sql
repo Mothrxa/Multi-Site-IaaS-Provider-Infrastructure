@@ -1,0 +1,11 @@
+-- /etc/freeradius/version/mods-enabled/sql --
+# Configuration for SQL module
+sql {
+    dialect = "postgresql"
+    driver = "rlm_sql_${dialect}"
+    server = "localhost"
+    port = 5432
+    login = "radius"
+    password = <password>
+    radius_db = "radius"
+}

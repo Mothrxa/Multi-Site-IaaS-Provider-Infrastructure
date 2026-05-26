@@ -22,7 +22,7 @@ Spine-Leaf (scalable)
 
 ECMP in routing
 
-OSPF between Firewall1-{Firewall2 - R1 - DMZ} + R1-DSW
+OSPF between Firewall1-{Firewall2 - R1 - DMZ} + R1-DSW + Firewall2-R2
 
 Redundancy:
 LACP on switchtes
@@ -56,3 +56,4 @@ smtp server: 10.0.40.6
 snmp server: 10.0.40.7
 syslog server: 10.0.40.8
 
+- Perspective d'avenir : multi branche (multiple servers' location)

@@ -1,0 +1,17 @@
+# topology documentation: http://containerlab.dev/lab-examples/single-srl/
+name: Branch-B
+topology:
+  nodes:
+    R1:
+      kind: linux
+      image: frrouting/frr:latest
+    Spine1:
+      kind: arista_ceos
+    Leaf:
+      kind: arista_ceos
+
+  links:
+    - endpoints: ["R1:eth0",]
+    - endpoints: ["R1:eth1","Spine1:eth1"]
+    - endpoints: ["Spine1:eth2","Leaf:eth1"]
+    - endpoints: ["Leaf:eth2"]

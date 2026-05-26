@@ -1,0 +1,5 @@
+OSPF on the LAN, DMZ and VPN facing interfaces
+ACL Rules
+NAT on the WAN interface
+LLDP on the LAN-DMZ interface
+IPSec + VTI

@@ -81,8 +81,6 @@ interface Vlan1
 router ospf 1
  passive-interface Loopback0
  network 10.0.0.4 0.0.0.0 area 0
- network 10.0.255.6 0.0.0.3 area 0
- network 10.0.255.20 0.0.0.3 area 0
 !
 ip classless
 ip route 0.0.0.0 0.0.0.0 10.0.255.5

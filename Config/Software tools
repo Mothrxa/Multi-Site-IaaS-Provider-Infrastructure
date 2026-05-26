@@ -5,11 +5,11 @@
 - Syslog: Graylog
 - SMTP: Postfix
 - IMAP: Dovecot
-- 
 
 - Internet/WAN Link: Tailscale
 - Infrastructure : GNS3/Containerlab
-- Routers/Switches : Cisco IOSv/IOSvL2
+- Routers: Cisco IOSv (VM) - FRRouting (Container)
+- Switches: Cisco IOSvl2 (VM) - Arista cEOS (Container)
 - Firewall+(IDS, DNS/IP blocking, Routing) : Pfsense+(Suricata, pfBlockerNG, frr)
 - Servers : Ubuntu-Server
 - IT Admin : RHEL
