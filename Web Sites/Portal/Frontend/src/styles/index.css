@@ -1,0 +1,251 @@
+/* STRATA — Web Portal global styles */
+
+:root {
+  color-scheme: dark;
+  /* DARK theme (default) */
+  --bg:           #07090f;
+  --bg-1:         #0b0e16;
+  --bg-2:         #11151f;
+  --surface:      rgba(20, 23, 33, 0.66);
+  --surface-2:    rgba(28, 32, 44, 0.55);
+  --surface-3:    rgba(255, 255, 255, 0.04);
+  --hairline:     rgba(255, 255, 255, 0.07);
+  --hairline-2:   rgba(255, 255, 255, 0.12);
+  --text:         #eef0f6;
+  --text-dim:     #a3aabd;
+  --text-mute:    #6b738a;
+  --shadow-card:  0 1px 0 rgba(255,255,255,0.04) inset, 0 22px 50px -16px rgba(0,0,0,0.6);
+  --shadow-pop:   0 24px 64px -12px rgba(0,0,0,0.7);
+  --glass-blur:   24px;
+  --glass-sat:    160%;
+
+  /* Brand accents */
+  --accent:        oklch(0.72 0.14 260);     /* indigo  */
+  --accent-2:      oklch(0.78 0.12 200);     /* cyan    */
+  --accent-soft:   color-mix(in oklab, var(--accent) 18%, transparent);
+  --accent-glow:   color-mix(in oklab, var(--accent) 38%, transparent);
+
+  /* Departmental accents */
+  --it-accent:     oklch(0.74 0.14 230);
+  --hr-accent:     oklch(0.74 0.16 350);
+  --mgmt-accent:   oklch(0.78 0.13 70);
+  --biz-accent:    oklch(0.78 0.13 70); /* legacy alias */
+
+  /* Semantic */
+  --good:          oklch(0.78 0.16 150);
+  --warn:          oklch(0.82 0.16 80);
+  --bad:           oklch(0.7  0.20 25);
+  --info:          oklch(0.78 0.13 230);
+
+  /* Geometry */
+  --r-card:        16px;
+  --r-soft:        12px;
+  --r-pill:        999px;
+  --gap-grid:      18px;
+  --pad-card:      22px;
+
+  /* Type */
+  --f-sans: "Inter", "SF Pro Display", -apple-system, system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+  --bg:           #f3f5fa;
+  --bg-1:         #eaedf4;
+  --bg-2:         #ffffff;
+  --surface:      rgba(255, 255, 255, 0.78);
+  --surface-2:    rgba(255, 255, 255, 0.6);
+  --surface-3:    rgba(0, 0, 0, 0.025);
+  --hairline:     rgba(15, 20, 38, 0.07);
+  --hairline-2:   rgba(15, 20, 38, 0.12);
+  --text:         #0c111c;
+  --text-dim:     #4a5267;
+  --text-mute:    #8a92a5;
+  --shadow-card:  0 1px 0 rgba(255,255,255,0.9) inset, 0 16px 36px -16px rgba(15,20,38,0.16);
+  --shadow-pop:   0 18px 50px -10px rgba(15,20,38,0.22);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--f-sans);
+  font-feature-settings: "ss01", "cv11", "ss03";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.005em;
+  overflow: hidden;
+}
+
+/* Ambient gradient background — soft auroras */
+body::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(800px 600px at 12% -8%, color-mix(in oklab, var(--accent) 24%, transparent) 0%, transparent 60%),
+    radial-gradient(700px 500px at 92% 8%, color-mix(in oklab, var(--accent-2) 20%, transparent) 0%, transparent 55%),
+    radial-gradient(900px 700px at 78% 96%, color-mix(in oklab, var(--accent) 12%, transparent) 0%, transparent 60%);
+  filter: saturate(120%);
+  opacity: 0.9;
+}
+html[data-theme="light"] body::before { opacity: 0.55; }
+
+#root { position: relative; z-index: 1; height: 100%; }
+
+/* Typography */
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+button { font-family: inherit; }
+.mono { font-family: var(--f-mono); font-feature-settings: "ss01"; letter-spacing: 0; }
+
+/* Glass surface */
+.glass {
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter:         blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border: 0.5px solid var(--hairline);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--r-card);
+}
+
+/* Card */
+.card {
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter:         blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border: 0.5px solid var(--hairline);
+  border-radius: var(--r-card);
+  padding: var(--pad-card);
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+.card-title { font-size: 13px; color: var(--text-dim); letter-spacing: 0.01em; }
+.card-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+
+/* Pill / Badge */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: var(--r-pill);
+  font-size: 11px; font-weight: 500;
+  border: 0.5px solid var(--hairline-2);
+  background: var(--surface-3);
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+.pill.good  { color: var(--good); background: color-mix(in oklab, var(--good) 12%, transparent); border-color: color-mix(in oklab, var(--good) 30%, transparent); }
+.pill.warn  { color: var(--warn); background: color-mix(in oklab, var(--warn) 12%, transparent); border-color: color-mix(in oklab, var(--warn) 30%, transparent); }
+.pill.bad   { color: var(--bad);  background: color-mix(in oklab, var(--bad)  14%, transparent); border-color: color-mix(in oklab, var(--bad)  30%, transparent); }
+.pill.info  { color: var(--info); background: color-mix(in oklab, var(--info) 14%, transparent); border-color: color-mix(in oklab, var(--info) 30%, transparent); }
+.pill .dot  { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 34px; padding: 0 14px;
+  border-radius: 10px;
+  font-size: 13px; font-weight: 500;
+  border: 0.5px solid var(--hairline-2);
+  background: var(--surface-3);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.06s ease, border-color 0.15s ease;
+  white-space: nowrap;
+}
+.btn:hover { background: color-mix(in oklab, var(--text) 8%, transparent); }
+.btn:active { transform: translateY(0.5px); }
+.btn.primary {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 92%, white 8%), var(--accent));
+  border-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,.18) inset, 0 6px 18px -6px var(--accent-glow);
+}
+.btn.primary:hover { filter: brightness(1.08); }
+.btn.icon { padding: 0; width: 34px; justify-content: center; }
+.btn.ghost { background: transparent; border-color: transparent; color: var(--text-dim); }
+.btn.ghost:hover { background: var(--surface-3); color: var(--text); }
+
+/* Inputs */
+.input {
+  height: 34px; padding: 0 12px;
+  background: var(--surface-3);
+  border: 0.5px solid var(--hairline-2);
+  border-radius: 10px;
+  font: 13px var(--f-sans);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.input:focus { border-color: color-mix(in oklab, var(--accent) 60%, transparent); background: color-mix(in oklab, var(--accent) 6%, var(--surface-3)); }
+select.input { background: var(--bg-2); color: var(--text); }
+select.input option { background: var(--bg-2); color: var(--text); }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(127, 130, 145, 0.25); border-radius: 8px; border: 2px solid transparent; background-clip: content-box; }
+::-webkit-scrollbar-thumb:hover { background: rgba(127, 130, 145, 0.45); background-clip: content-box; }
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 0.65; transform: scale(1); }
+  50%      { opacity: 1;    transform: scale(1.15); }
+}
+@keyframes blink { 0%, 60%, 100% { opacity: 1; } 30% { opacity: 0.35; } }
+@keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+@keyframes slideup { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.fadein { animation: fadein 0.35s ease both; }
+.slideup { animation: slideup 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Departmental color theme overrides */
+[data-dept="it"]    { --accent: var(--it-accent);  }
+[data-dept="hr"]    { --accent: var(--hr-accent);  }
+[data-dept="biz"]   { --accent: var(--biz-accent); }
+
+/* Section header */
+.section-h { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; gap: 16px; }
+.section-h h2 { font-size: 26px; letter-spacing: -0.028em; white-space: nowrap; }
+.section-h .sub { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+.section-h .btn { white-space: nowrap; }
+
+/* Subtle data table */
+.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+.tbl th { text-align: left; color: var(--text-mute); font-weight: 500; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 14px; border-bottom: 0.5px solid var(--hairline); }
+.tbl td { padding: 14px; border-bottom: 0.5px solid var(--hairline); }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl tr:hover td { background: var(--surface-3); }
+
+/* Avatar */
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; color: #fff;
+  border: 1px solid color-mix(in oklab, var(--accent) 50%, transparent);
+}
+
+/* Loading skeleton stripe */
+.stripe-bg {
+  background-image: repeating-linear-gradient(45deg, var(--hairline) 0 6px, transparent 6px 14px);
+}
+
+/* Tweaks panel custom theming over the starter component */
+.twk-panel{
+  background: var(--surface) !important;
+  color: var(--text) !important;
+  border-color: var(--hairline-2) !important;
+}
+.twk-hd b{ color: var(--text) !important; }
+.twk-x{ color: var(--text-dim) !important; }
+.twk-x:hover{ background: var(--surface-3) !important; color: var(--text) !important; }
+.twk-lbl{ color: var(--text-dim) !important; }
+.twk-val{ color: var(--text-mute) !important; }
+.twk-sect{ color: var(--text-mute) !important; }
+
+/* No outline on focus for cosmetic */
+button:focus-visible, .input:focus-visible { outline: 2px solid color-mix(in oklab, var(--accent) 50%, transparent); outline-offset: 2px; }
