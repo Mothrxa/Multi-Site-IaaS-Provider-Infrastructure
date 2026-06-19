@@ -1,11 +1,6 @@
-- NAC if needed
+- DNS/IP Blocking
+- SIEM
+- IDS
 - ACLs
-- Layer 2 security features (Port Security, DHCP Snooping, Dynamic ARP Inspection)
-- On-Prem Cloud Branch (Spine-Leaf Architecture) - Terraform + VRFs if needed + n8n if needed
 
-- On Create account do :
-    - sudo mkdir -p /var/mail/vmail/pfe2627.xyz/$USER/Maildir/{cur,new,tmp}
-    - echo "$USER@pfe2627.xyz      pfe2627.xyz/$USER/Maildir/" | sudo tee /etc/postfix/vmailbox
-    - echo "$USER@pfe2627.xyz:{SHA512-CRYPT}<Hash>" | sudo tee /etc/dovecot/users 
-        (gen Hash with sudo doveadm pw -s SHA512-CRYPT)
-    - sudo mkdir -p /var/files/$USER/payslip
+- keep last --> Layer 2 security features (Port Security, DHCP Snooping, Dynamic ARP Inspection)

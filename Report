@@ -7,6 +7,9 @@
 - Redundancy embodies the principle “design for failure” , assuming that every hardware, software, and network element will eventually fail
 
 - 3dna 	
-	- Hardware Redundancy (NIC Bonding, Dual PSUs) 
+	- Hardware Redundancy (NIC Bonding)
 	- Network Redundancy (Duplicate paths, HSRP, LACP, ECMP Routing) 
 	- Data Redundancy (DB Replication) 
+
+
+- Started with 'traditional infrastructure' then Evolved to 'automation with Ansible & Terraform'

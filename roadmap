@@ -1,11 +1,3 @@
-Start with:
-
-traditional infrastructure
-
-Then evolve to:
-
-automation (Ansible & Terraform)
-
 Then explore:
 
 SDN / SD-access (brownfield/greenfield deployement)

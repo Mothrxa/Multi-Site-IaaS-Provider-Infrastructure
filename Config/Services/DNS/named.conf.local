@@ -25,8 +25,8 @@ zone "10.0.30.in-addr.arpa" {
     allow-update { key dhcp-key; };
 };
 
-zone "10.0.90.in-addr.arpa" {
+zone "10.0.40.in-addr.arpa" {
     type master;
-    file "/var/cache/bind/db.10.0.90";
+    file "/var/cache/bind/db.10.0.40";
     allow-update { key dhcp-key; };
 };

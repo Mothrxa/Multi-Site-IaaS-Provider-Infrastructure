@@ -8,7 +8,7 @@ sudo mkdir -p /var/mail/vmail
 sudo chown -R vmail:vmail /var/mail/vmail
 
 # for each host created do 
-sudo mkdir -p /var/mail/vmail/pfe2627.xyz/$USER/Maildir/{cur,new,tmp}
+sudo mkdir -p /var/mail/vmail/pfe2627.xyz/$USER/Maildir/{cur,new,tmp,star,arch,sent}
 
 sudo chown root:dovecot /etc/dovecot/users
 sudo chmod 640 /etc/dovecot/users

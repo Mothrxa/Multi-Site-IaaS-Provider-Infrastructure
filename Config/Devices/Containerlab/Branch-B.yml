@@ -1,17 +1,30 @@
-# topology documentation: http://containerlab.dev/lab-examples/single-srl/
 name: Branch-B
 topology:
-  nodes:
-    R1:
-      kind: linux
+  kinds:
+    ceos:
+      image: ceos:4.34.1F
+    linux:
       image: frrouting/frr:latest
-    Spine1:
-      kind: arista_ceos
-    Leaf:
-      kind: arista_ceos
+
+  nodes:
+    r2:
+      kind: linux
+      exec:
+        - ip addr add 10.0.255.18/30 dev eth1
+        - ip addr add 10.0.255.21/30 dev eth2
+        - ip route replace default via 10.0.255.17 dev eth1
+    spine:
+      kind: ceos
+      startup-config: spine-startup.cfg
+    leaf:
+      kind: ceos
+      startup-config: leaf-startup.cfg
+    gns3-br:
+      kind: bridge
 
   links:
-    - endpoints: ["R1:eth0",]
-    - endpoints: ["R1:eth1","Spine1:eth1"]
-    - endpoints: ["Spine1:eth2","Leaf:eth1"]
-    - endpoints: ["Leaf:eth2"]
+    - endpoints: ["r2:eth1", "gns3-br:eth0"]
+    - endpoints: ["r2:eth2", "spine:eth1"]
+      ipv4: ["", "10.0.255.22/30"]
+    - endpoints: ["spine:eth2", "leaf:eth1"]
+      ipv4: ["10.0.255.25/30", "10.0.255.26/30"]
