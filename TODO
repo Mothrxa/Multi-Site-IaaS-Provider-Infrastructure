@@ -4,3 +4,14 @@
 - ACLs
 
 - keep last --> Layer 2 security features (Port Security, DHCP Snooping, Dynamic ARP Inspection)
+
+
+- Cloud init intergration with libvirt/kvm to connect terraform with ansible 
+    -> (to self-configure on boot (hostname, SSH keys, network))
+
+- Meet the Cloud Computing Characteristics:
+    - On-demand self-service
+    - Broad network access
+    - Resource pooling
+    - Rapid-elasticity
+    - Measured service.

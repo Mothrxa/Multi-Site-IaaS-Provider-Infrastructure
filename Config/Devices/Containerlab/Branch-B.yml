@@ -3,28 +3,24 @@ topology:
   kinds:
     ceos:
       image: ceos:4.34.1F
-    linux:
-      image: frrouting/frr:latest
+    cisco_iol:
+      image: vrnetlab/cisco_iol:17.18.02
 
   nodes:
     r2:
-      kind: linux
-      exec:
-        - ip addr add 10.0.255.18/30 dev eth1
-        - ip addr add 10.0.255.21/30 dev eth2
-        - ip route replace default via 10.0.255.17 dev eth1
+      kind: cisco_iol
+      startup-config: r2.txt.partial
     spine:
       kind: ceos
-      startup-config: spine-startup.cfg
+      startup-config: spine.txt.partial
     leaf:
       kind: ceos
-      startup-config: leaf-startup.cfg
+      startup-config: leaf.txt.partial
     gns3-br:
       kind: bridge
 
   links:
-    - endpoints: ["r2:eth1", "gns3-br:eth0"]
-    - endpoints: ["r2:eth2", "spine:eth1"]
-      ipv4: ["", "10.0.255.22/30"]
+    - endpoints: ["r2:e0/1", "gns3-br:eth0"]
+    - endpoints: ["r2:e0/2", "spine:eth1"]
     - endpoints: ["spine:eth2", "leaf:eth1"]
-      ipv4: ["10.0.255.25/30", "10.0.255.26/30"]
+    # - endpoints: ["leaf:eth2", "gns3-br:eth1"]
