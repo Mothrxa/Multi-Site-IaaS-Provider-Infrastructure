@@ -21,17 +21,10 @@ A full written report is in [`report.pdf`](report.pdf) (LaTeX source in
 
 ## Architecture at a glance
 
-```
-                         ┌───────────────┐
-        Internet ───────▶│  ISP router   │◀──────── Internet
-                         └───┬───────┬───┘
-              ┌──────────────┘       └──────────────┐
-              │                                      │
-     ┌────────▼────────┐                    ┌────────▼────────┐
-     │   HQ (Branch A)  │◀── site-to-site ──▶│ Cloud DC (Br. B)│
-     │  campus 3-tier    │      IPsec VPN      │  spine-leaf     │
-     └───────────────────┘                    └─────────────────┘
-```
+<p float="left">
+  <img src="Architecture/Branch A.png" alt="Branch A (HQ) topology" width="48%" />
+  <img src="Architecture/Branch B.png" alt="Branch B (Cloud Datacenter) topology" width="48%" />
+</p>
 
 - **HQ (`Architecture/Branch A.png`)** — classic redundant campus design:
   dual firewalls (F1/F2) → dual core routers (R1/R2) → dual distribution
