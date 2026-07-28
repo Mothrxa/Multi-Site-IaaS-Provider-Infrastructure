@@ -1,0 +1,24 @@
+--- 
+- name: NTP
+  hosts: NetworkDevices
+  gather_facts: false
+
+  tasks:
+  - name: Configure NTP Server
+    cisco.ios.ios_config:
+      lines:
+        - ntp server 10.0.255.1
+        - clock timezone CET 1
+    tags: NTP
+  
+  - name: Verify NTP Configuration
+    cisco.ios.ios_command:
+      commands: 
+        - show ntp associations
+    tags: ShowNTP
+    register: ntp_output
+
+  - name: Display output
+    ansible.builtin.debug:
+      var: ntp_output.stdout_lines[0]
+    tags: ShowNTP

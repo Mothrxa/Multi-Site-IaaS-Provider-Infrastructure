@@ -1,19 +1,8 @@
-Then explore:
-
-SDN / SD-access (brownfield/greenfield deployement)
-
-And evaluate with:
-
-security scenarios
-
-
-- Use Rest Authentication for APIs
 ---
 !!!!! Discuss About the added values
 
 Mémoire
 Configuring IP services (DHCP, DNS, NAT, NTP, SNMP, Syslog)
-potentially adding an ai model (elaborate later for which)
 Security evaluation by simulating cyber attacks scenarios + security metigation
 Cloud computing service (linux-windows vps -- expanding bessaa's final year project (+VRF))
 a small section about risk management and the entreprise's policy (for internal and external threats)
@@ -32,8 +21,5 @@ Centralized control
 APIs + automation
 Policy-based instead of device-based
 
-
-
-- After TN add Python automation (Netmiko / RESTCONF) to show Manual vs automated config
 - Use OpenDaylight to Simulate Centralized control
 - Demo automation (devent) - Explain SD-Access / ACI conceptually (SD-Access: cisco's SDN solution for campus, ACI: cisco's SDN solution for Data Centers)

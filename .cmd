@@ -19,8 +19,8 @@ sudo iptables -t nat -A POSTROUTING -o tap-cloud -j MASQUERADE
 sudo iptables -A FORWARD -i wlo1 -o tap-cloud -p tcp --dport 25 -d 203.0.113.2 -j ACCEPT
 
 
-sudo iptables -t nat -A POSTROUTING -s 203.0.113.0/30 -o wlp0s20f0u1 -j MASQUERADE
-sudo iptables -t nat -A POSTROUTING -s 203.0.113.4/30 -o wlp0s20f0u1 -j MASQUERADE
-sudo iptables -t nat -A POSTROUTING -s 198.51.100.0/30 -o wlp0s20f0u1 -j MASQUERADE
-sudo iptables -A FORWARD -i tap-cloud -o wlp0s20f0u1 -j ACCEPT
-sudo iptables -A FORWARD -i wlp0s20f0u1 -o tap-cloud -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -t nat -A POSTROUTING -s 203.0.113.0/30 -o wlp0s20f0u2 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -s 203.0.113.4/30 -o wlp0s20f0u2 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -s 198.51.100.0/30 -o wlp0s20f0u2 -j MASQUERADE
+sudo iptables -A FORWARD -i tap-cloud -o wlp0s20f0u2 -j ACCEPT
+sudo iptables -A FORWARD -i wlp0s20f0u2 -o tap-cloud -m state --state RELATED,ESTABLISHED -j ACCEPT

@@ -5,11 +5,16 @@ topology:
       image: ceos:4.34.1F
     cisco_iol:
       image: vrnetlab/cisco_iol:17.18.02
+    linux:
+      image: nat-node:alpine
 
   nodes:
     r2:
       kind: cisco_iol
       startup-config: r2.txt.partial
+    nat:
+      kind: linux
+      network-mode: none
     spine:
       kind: ceos
       startup-config: spine.txt.partial
@@ -18,9 +23,11 @@ topology:
       startup-config: leaf.txt.partial
     gns3-br:
       kind: bridge
-
+    br-fabric:
+      kind: bridge
   links:
     - endpoints: ["r2:e0/1", "gns3-br:eth0"]
     - endpoints: ["r2:e0/2", "spine:eth1"]
+    - endpoints: ["gns3-br:eth1", "nat:eth1"]
     - endpoints: ["spine:eth2", "leaf:eth1"]
-    # - endpoints: ["leaf:eth2", "gns3-br:eth1"]
+    - endpoints: ["leaf:eth2", "br-fabric:eth0"]

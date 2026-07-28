@@ -1,0 +1,24 @@
+--- 
+- name: SNMP
+  hosts: NetworkDevices
+  gather_facts: false
+
+  tasks:
+  - name: Configure SNMP Community
+    cisco.ios.ios_config:
+      lines:
+        - snmp-server community private ro
+    tags: SNMP
+
+  - name: Verify SNMP Community
+    cisco.ios.ios_command:
+      commands: 
+        - show snmp community
+    tags: ShowSNMP
+    register: snmp_output
+
+  - name: Display output
+    ansible.builtin.debug:
+      msg: "{{ snmp_output.stdout_lines[0] }}"
+    tags: ShowSNMP
+    

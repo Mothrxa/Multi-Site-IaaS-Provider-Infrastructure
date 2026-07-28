@@ -1,0 +1,30 @@
+- name: Configure the network
+  hosts: Servers
+  tasks:
+    - name: Bond connection profile with two Ethernet ports
+      ansible.builtin.include_role:
+        name: redhat.rhel_system_roles.network
+      vars:
+        network_connections:
+          # Logical bond interface
+        - name: bond0
+          type: bond
+          interface_name: bond0
+          ip:
+            dhcp4: yes
+            auto6: yes
+            bond:
+            mode: active-backup
+            state: up
+        # First physical port of the bond
+        - name: bond0-port1
+          interface_name: enp7s0
+          type: ethernet
+          controller: bond0
+          state: up
+        # Second physical port of the bond
+        - name: bond0-port2
+          interface_name: enp8s0
+          type: ethernet
+          controller: bondO
+          state: up

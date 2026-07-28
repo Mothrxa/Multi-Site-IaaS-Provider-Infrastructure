@@ -1,0 +1,17 @@
+--- 
+- name: Global Configuration
+  hosts: NetworkDevices
+  gather_facts: false
+
+  tasks:
+  - name: Configure ExecTimeout
+    cisco.ios.ios_config:
+      lines:
+        - line console 0
+        - exec-timeout 30
+        - logging synchronous
+        - line vty 0 4
+        - exec-timeout 30
+        - logging synchronous
+        - ip name-server 10.0.40.2
+    tags: line

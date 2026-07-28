@@ -1,0 +1,19 @@
+---
+- name: STP Features 
+  hosts: AccessSwitches
+  gather_facts: false
+
+  tasks:
+    - name: Configure RSTP
+      cisco.ios.ios_config:
+        lines:
+          - spanning-tree mode rapid-pvst
+      tags: rstp
+
+    - name: Configure Portfast && BPDU Guard
+      cisco.ios.ios_config:
+        lines:
+          - spanning-tree portfast
+          - spanning-tree bpduguard enable
+        parents: interface GigabitEthernet0/1
+      tags: portfast_bpduguard

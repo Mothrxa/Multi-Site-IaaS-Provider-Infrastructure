@@ -1,0 +1,16 @@
+
+- **Terraform**
+	- *Components*
+		- *Configuration files:* Files that describe the desired state of the infrastructure and specify resources along with their configurations.
+		- *Providers:* Plugins that enable interaction with different infrastructure platforms (AWS, Azure, Google Cloud).
+		- *Resources:* Components you want to create and manage, such as virtual machines, networks, or databases.
+		- *Data sources:* Reference details about existing infrastructure within your configuration.
+		- *Variables:* A method to reuse code and make configurations more flexible.
+		- *State files:* Record the infrastructure’s current state and track configuration changes that are made.
+		- *Modules:* Organize and reuse Terraform code. Modules encapsulate a set of resources and configurations that can be treated as a single unit. Modules promote code reusability and modularity.
+	- *Stages*
+		1. *Write:* This is where you define the resources that will be used across multiple cloud providers or services.
+		2. *Plan:* An execution plan is created that describes the infrastructure that will be created, updated, or destroyed based on the current configuration and infrastructure.
+		3. *Apply:* Once the plan is approved, the proposed operations will be completed in the appropriate order.
+
+compute (hypervisor) and storage (Ceph, SAN) are different layers so a VM can migrate between physical hosts without moving its disk

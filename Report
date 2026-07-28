@@ -6,7 +6,7 @@
 	
 - Redundancy embodies the principle “design for failure” , assuming that every hardware, software, and network element will eventually fail
 
-- 3dna 	
+- we have
 	- Hardware Redundancy (NIC Bonding)
 	- Network Redundancy (Duplicate paths, HSRP, LACP, ECMP Routing) 
 	- Data Redundancy (DB Replication)

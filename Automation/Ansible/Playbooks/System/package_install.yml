@@ -1,0 +1,28 @@
+---
+- name: Install Packages
+  hosts: Servers
+  gather_facts: false
+  become: true
+
+  tasks:
+  - name: Install Nginx
+    apt:
+      name: nginx
+      state: present
+    tags: nginx
+  - name: Install Node.js
+    apt:
+      name: nodejs
+      state: present
+      version: "20.x"
+    tags: nodejs
+  - name: Install npm
+    apt:
+      name: npm
+      state: present
+    tags: npm
+  - name: Install pm2
+    npm:
+      name: pm2
+      state: present
+    tags: pm2
