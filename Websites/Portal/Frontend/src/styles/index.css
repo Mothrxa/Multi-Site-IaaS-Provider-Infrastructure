@@ -1,0 +1,389 @@
+/* STRATA Portal — iOS / macOS design system  ·  light-only, warm palette */
+
+:root {
+  color-scheme: light;
+
+  /* ── Backgrounds ──────────────────────────────────────────── */
+  --bg:           #eeeae3;
+  --bg-1:         #e6e2da;
+  --bg-2:         #f8f6f2;
+
+  /* ── Surfaces (warm glass) ───────────────────────────────── */
+  --surface:      rgba(252, 250, 246, 0.92);
+  --surface-2:    rgba(242, 238, 231, 0.78);
+  --surface-3:    rgba(46, 38, 26, 0.042);
+
+  /* ── Hairlines ───────────────────────────────────────────── */
+  --hairline:     rgba(54, 44, 30, 0.085);
+  --hairline-2:   rgba(54, 44, 30, 0.15);
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --text:         #1c1a16;
+  --text-dim:     #514d46;
+  --text-mute:    #928d84;
+
+  /* ── Shadows (warm, soft) ────────────────────────────────── */
+  --shadow-card:  0 1px 0 rgba(255,253,248,0.85) inset,
+                  0 1px 3px rgba(34,28,18,0.05),
+                  0 8px 28px -8px rgba(34,28,18,0.10);
+  --shadow-pop:   0 2px 8px rgba(34,28,18,0.07),
+                  0 12px 40px -8px rgba(34,28,18,0.16);
+  --shadow-float: 0 2px 6px rgba(34,28,18,0.06),
+                  0 8px 24px rgba(34,28,18,0.10);
+
+  --glass-blur:   40px;
+  --glass-sat:    180%;
+
+  /* ── Accent ──────────────────────────────────────────────── */
+  --accent:        oklch(0.46 0.09 254);
+  --accent-2:      oklch(0.52 0.08 198);
+  --accent-soft:   color-mix(in oklab, var(--accent) 10%, transparent);
+  --accent-glow:   color-mix(in oklab, var(--accent) 18%, transparent);
+
+  /* ── Departmental ────────────────────────────────────────── */
+  --it-accent:     oklch(0.48 0.10 232);
+  --hr-accent:     oklch(0.52 0.10 14);
+  --mgmt-accent:   oklch(0.54 0.09 68);
+  --biz-accent:    oklch(0.54 0.09 68);
+
+  /* ── Semantic ─────────────────────────────────────────────── */
+  --good:          oklch(0.48 0.12 148);
+  --warn:          oklch(0.56 0.12 76);
+  --bad:           oklch(0.48 0.14 22);
+  --info:          oklch(0.48 0.09 232);
+
+  /* ── Geometry (iOS/macOS) ────────────────────────────────── */
+  --r-card:        20px;
+  --r-soft:        14px;
+  --r-ctrl:        12px;
+  --r-pill:        999px;
+  --gap-grid:      18px;
+  --pad-card:      22px;
+
+  /* ── Typography (SF Pro priority) ───────────────────────── */
+  --f-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Inter", system-ui, sans-serif;
+  --f-mono: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* ── Spring animations ───────────────────────────────────── */
+  --spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; height: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--f-sans);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.006em;
+  overflow: hidden;
+}
+
+/* Subtle warm ambient */
+body::before {
+  content: "";
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 900px 640px at 8% -4%,   oklch(0.88 0.04 65  / 0.36) 0%, transparent 64%),
+    radial-gradient(ellipse 680px 480px at 92% 10%,  oklch(0.88 0.04 218 / 0.18) 0%, transparent 58%),
+    radial-gradient(ellipse 780px 640px at 52% 106%, oklch(0.87 0.03 150 / 0.16) 0%, transparent 62%);
+}
+
+#root { position: relative; z-index: 1; height: 100%; }
+
+/* ── Typography ────────────────────────────────────────────────── */
+h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.022em; line-height: 1.08; }
+button { font-family: inherit; }
+.mono { font-family: var(--f-mono); letter-spacing: 0; }
+
+/* ── Glass (macOS vibrancy material) ───────────────────────────── */
+.glass {
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter:         blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border: 0.5px solid var(--hairline);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--r-card);
+}
+
+/* ── Card (macOS panel) ────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-sat));
+  backdrop-filter:         blur(var(--glass-blur)) saturate(var(--glass-sat));
+  border: 0.5px solid var(--hairline);
+  border-radius: var(--r-card);
+  padding: var(--pad-card);
+  position: relative;
+  box-shadow: var(--shadow-card);
+}
+.card-title { font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-mute); }
+.card-h { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+
+/* ── Pill / Badge (iOS badge) ──────────────────────────────────── */
+.pill {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 9px; border-radius: var(--r-pill);
+  font-size: 11px; font-weight: 600;
+  background: var(--surface-3);
+  border: 0.5px solid var(--hairline-2);
+  color: var(--text-dim);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.pill.good  { color: var(--good); background: color-mix(in oklab, var(--good) 10%, transparent); border-color: color-mix(in oklab, var(--good) 24%, transparent); }
+.pill.warn  { color: var(--warn); background: color-mix(in oklab, var(--warn) 10%, transparent); border-color: color-mix(in oklab, var(--warn) 24%, transparent); }
+.pill.bad   { color: var(--bad);  background: color-mix(in oklab, var(--bad)  12%, transparent); border-color: color-mix(in oklab, var(--bad)  24%, transparent); }
+.pill.info  { color: var(--info); background: color-mix(in oklab, var(--info) 12%, transparent); border-color: color-mix(in oklab, var(--info) 24%, transparent); }
+.pill .dot  { width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+
+/* ── Button (iOS button) ────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  height: 36px; padding: 0 15px;
+  border-radius: var(--r-ctrl);
+  font-size: 14px; font-weight: 500;
+  border: 0.5px solid var(--hairline-2);
+  background: var(--surface-3);
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.12s, transform 0.08s var(--spring), border-color 0.12s, filter 0.12s;
+  white-space: nowrap;
+  -webkit-user-select: none; user-select: none;
+}
+.btn:hover  { background: color-mix(in oklab, var(--text) 6%, transparent); }
+.btn:active { transform: scale(0.96); }
+.btn.primary {
+  background: var(--accent);
+  border-color: color-mix(in oklab, var(--accent) 55%, transparent);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255,255,255,.12) inset, 0 3px 12px -3px var(--accent-glow);
+}
+.btn.primary:hover  { filter: brightness(1.07); }
+.btn.primary:active { transform: scale(0.96); filter: brightness(0.96); }
+.btn.icon   { padding: 0; width: 36px; justify-content: center; }
+.btn.ghost  { background: transparent; border-color: transparent; color: var(--text-dim); }
+.btn.ghost:hover { background: var(--surface-3); color: var(--text); }
+.btn.sm     { height: 30px; padding: 0 12px; font-size: 12.5px; border-radius: 9px; }
+.btn.lg     { height: 44px; padding: 0 22px; font-size: 15px; border-radius: 14px; }
+.btn.danger { color: var(--bad); background: color-mix(in oklab, var(--bad) 9%, transparent); border-color: color-mix(in oklab, var(--bad) 22%, transparent); }
+.btn.danger:hover { background: color-mix(in oklab, var(--bad) 14%, transparent); }
+.btn:disabled { opacity: 0.42; pointer-events: none; }
+
+/* ── Input (iOS text field) ─────────────────────────────────────── */
+.input {
+  height: 40px; padding: 0 13px;
+  background: rgba(255, 253, 249, 0.72);
+  border: 0.5px solid var(--hairline-2);
+  border-radius: var(--r-ctrl);
+  font: 14px var(--f-sans);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.12s, box-shadow 0.12s, background 0.12s;
+}
+.input:focus {
+  border-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 14%, transparent);
+  background: rgba(255,253,249,0.94);
+}
+.input::placeholder { color: var(--text-mute); }
+select.input {
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%23928d84' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 13px center;
+  background-color: rgba(255,253,249,0.72);
+  padding-right: 38px;
+  cursor: pointer;
+}
+select.input option { background: var(--bg-2); color: var(--text); }
+
+/* ── Segmented control (UISegmentedControl) ─────────────────────── */
+.seg {
+  display: inline-flex;
+  background: var(--surface-3);
+  border: 0.5px solid var(--hairline-2);
+  border-radius: var(--r-pill);
+  padding: 3px; gap: 2px;
+}
+.seg button {
+  border: none; background: transparent; cursor: pointer;
+  padding: 6px 16px; border-radius: var(--r-pill);
+  font-size: 13px; font-weight: 500;
+  color: var(--text-dim);
+  transition: all 0.14s var(--ease-out);
+  white-space: nowrap;
+}
+.seg button.on {
+  background: rgba(255,253,249,0.95);
+  color: var(--text);
+  box-shadow: 0 1px 4px rgba(34,28,18,0.12), 0 1px 0 rgba(255,255,255,0.72) inset;
+}
+
+/* ── Scrollbar (macOS overlay) ──────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(80, 68, 50, 0.18);
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(80, 68, 50, 0.34); background-clip: content-box; }
+
+/* ── Animations ─────────────────────────────────────────────────── */
+@keyframes pulse   { 0%,100%{ opacity:0.65; transform:scale(1); } 50%{ opacity:1; transform:scale(1.15); } }
+@keyframes blink   { 0%,60%,100%{ opacity:1; } 30%{ opacity:0.35; } }
+@keyframes fadein  { from{ opacity:0; transform:translateY(5px) scale(0.99); } to{ opacity:1; transform:none; } }
+@keyframes slideup { from{ opacity:0; transform:translateY(10px) scale(0.98); } to{ opacity:1; transform:none; } }
+@keyframes popin   { from{ opacity:0; transform:scale(0.94); } to{ opacity:1; transform:scale(1); } }
+@keyframes shimmer { 0%{ background-position:-200px 0; } 100%{ background-position:200px 0; } }
+@keyframes spin    { to{ transform:rotate(360deg); } }
+
+.fadein  { animation: fadein  0.30s var(--ease-out) both; }
+.slideup { animation: slideup 0.36s var(--ease-out) both; }
+.popin   { animation: popin   0.26s var(--spring) both; }
+
+/* ── Department accent themes ───────────────────────────────────── */
+[data-dept="it"]  { --accent: var(--it-accent);  }
+[data-dept="hr"]  { --accent: var(--hr-accent);  }
+[data-dept="biz"] { --accent: var(--biz-accent); }
+
+/* ── Portal layout ──────────────────────────────────────────────── */
+.portal { display: grid; grid-template-columns: 224px 1fr; height: 100vh; }
+
+/* Sidebar — macOS warm light sidebar material */
+.sidebar {
+  background: rgba(230, 226, 218, 0.82);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+  backdrop-filter:         blur(40px) saturate(200%);
+  border-right: 0.5px solid var(--hairline);
+  padding: 16px 10px;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+}
+.sidebar .logo-row {
+  padding: 4px 8px 16px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sidebar .nav-group { display: flex; flex-direction: column; gap: 1px; margin-top: 4px; }
+.sidebar .nav-group .lbl {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.10em;
+  color: var(--text-mute); padding: 14px 12px 5px;
+  font-weight: 600; opacity: 0.65;
+}
+.sidebar .nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; border-radius: 11px;
+  font-size: 14px; font-weight: 450; color: var(--text-dim);
+  cursor: pointer;
+  transition: background 0.10s, color 0.10s, transform 0.08s var(--spring);
+}
+.sidebar .nav-item:hover  { background: rgba(34,28,18,0.06); color: var(--text); }
+.sidebar .nav-item:active { transform: scale(0.97); }
+.sidebar .nav-item.active {
+  background: color-mix(in oklab, var(--accent) 12%, transparent);
+  color: var(--text); font-weight: 500;
+}
+.sidebar .nav-item svg { opacity: 0.75; flex-shrink: 0; }
+.sidebar .nav-item.active svg { opacity: 1; color: var(--accent); }
+.sidebar .nav-item .badge {
+  margin-left: auto; font-size: 10px; font-weight: 600; color: var(--text-mute);
+  background: var(--surface-3); padding: 1px 6px; border-radius: 999px;
+}
+.sidebar .footer {
+  margin-top: auto; padding: 10px 6px;
+  display: flex; flex-direction: column; gap: 6px;
+  border-top: 0.5px solid var(--hairline);
+}
+
+/* Main column */
+.main-col { display: flex; flex-direction: column; overflow: hidden; }
+
+/* Topbar — macOS toolbar */
+.topbar {
+  height: 54px; flex-shrink: 0;
+  display: flex; align-items: center; gap: 10px; padding: 0 22px;
+  border-bottom: 0.5px solid var(--hairline);
+  background: rgba(238,234,227,0.75);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  backdrop-filter:         blur(28px) saturate(180%);
+}
+.topbar .spacer { flex: 1; }
+.topbar .avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; cursor: pointer;
+}
+
+/* Page */
+.page { flex: 1; overflow-y: auto; padding: 26px 28px 64px; }
+.page-h { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 22px; gap: 16px; }
+.page-h h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.025em; }
+.page-h .sub { font-size: 13px; color: var(--text-dim); margin-top: 5px; }
+
+/* Section header */
+.section-h { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; gap: 16px; }
+.section-h h2 { font-size: 22px; letter-spacing: -0.024em; white-space: nowrap; }
+.section-h .sub { color: var(--text-dim); font-size: 13px; margin-top: 4px; }
+
+/* Grid */
+.g { display: grid; gap: var(--gap-grid); }
+.g.cols-2  { grid-template-columns: repeat(2, 1fr); }
+.g.cols-3  { grid-template-columns: repeat(3, 1fr); }
+.g.cols-4  { grid-template-columns: repeat(4, 1fr); }
+.g.cols-12 { grid-template-columns: repeat(12, 1fr); }
+
+/* Table (macOS grouped/inset style) */
+.tbl { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13.5px; }
+.tbl th {
+  text-align: left; color: var(--text-mute); font-weight: 600;
+  font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 9px 14px; border-bottom: 0.5px solid var(--hairline);
+}
+.tbl td { padding: 14px; border-bottom: 0.5px solid var(--hairline); }
+.tbl tr:last-child td { border-bottom: 0; }
+.tbl tr:hover td { background: var(--surface-3); }
+
+/* Avatar */
+.avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600; color: #fff;
+  border: 1px solid color-mix(in oklab, var(--accent) 36%, transparent);
+}
+
+/* Skeleton / stripe */
+.stripe-bg {
+  background-image: repeating-linear-gradient(45deg, var(--hairline) 0 5px, transparent 5px 12px);
+}
+
+/* Tweaks panel overrides */
+.twk-panel   { background: var(--bg-2)      !important; color: var(--text)     !important; border-color: var(--hairline-2) !important; }
+.twk-hd b    { color: var(--text)           !important; }
+.twk-x       { color: var(--text-dim)       !important; }
+.twk-x:hover { background: var(--surface-3) !important; color: var(--text) !important; }
+.twk-lbl     { color: var(--text-dim)       !important; }
+.twk-val     { color: var(--text-mute)      !important; }
+.twk-sect    { color: var(--text-mute)      !important; }
+
+/* Helpers */
+.row    { display: flex; align-items: center; gap: 12px; }
+.col    { display: flex; flex-direction: column; gap: 12px; }
+.spacer { flex: 1; }
+.dim    { color: var(--text-dim); }
+.mute   { color: var(--text-mute); }
+.center { display: flex; align-items: center; justify-content: center; }
+.divider { height: 0.5px; background: var(--hairline); margin: 18px 0; }
+
+/* Focus ring */
+button:focus-visible, .input:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 42%, transparent);
+  outline-offset: 2px;
+}

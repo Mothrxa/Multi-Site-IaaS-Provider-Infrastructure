@@ -16,8 +16,9 @@ automation, and the two web applications that sit on top of the infrastructure.
 Intrusion detection and the controlled attack-simulation campaign are a
 teammate's deliverable and are documented separately — not covered here.
 
-A full written report is in [`report.pdf`](report.pdf) (LaTeX source in
-`report.tex`).
+A full written report is in
+[`Strata_Report_Revised.pdf`](Strata_Report_Revised.pdf) (source in
+`Strata_Report_Revised.docx`).
 
 ## Architecture at a glance
 
@@ -117,7 +118,7 @@ Architecture/      Topology diagrams for both sites
 Automation/         Ansible playbooks + Terraform templates
 Config/Devices/     Router/switch/firewall configs (GNS3, Containerlab, V_Alpha)
 Config/Services/    DHCP, DNS, AAA, SMTP, IMAP, SNMP, Syslog configs
-report.tex/.pdf     Written report (LaTeX source + compiled PDF)
+Strata_Report_Revised.docx/.pdf   Written report (source + compiled PDF)
 Websites/           (see Web platforms above — apps developed alongside this repo)
 ```
 
