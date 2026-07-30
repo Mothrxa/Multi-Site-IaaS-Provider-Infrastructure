@@ -136,6 +136,9 @@ Websites/           (see Web platforms above — apps developed alongside this r
 
 ## Project credit
 
-The cloud-computing service builds on and extends an earlier final-year
-project by Bessaa, adding multi-tenant VRF-style isolation and the automated
-provisioning pipeline described above.
+The Cloud platform builds on the same self-hosted VPS/account-management
+concept as an earlier final-year project by Bessaa Mohamed —
+[PFE-ALG_TLC](https://github.com/Bsamohamed/PFE-ALG_TLC), a VyOS/FreeRADIUS-based
+VPN gateway and client-account management platform built for Algérie
+Télécom — extended here into a full multi-tenant IaaS compute platform with
+Terraform-driven VM/container provisioning.
