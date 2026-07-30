@@ -1,4 +1,4 @@
-# Strata — Multi-Site IaaS Provider Infrastructure
+# Multi-Site IaaS Provider Infrastructure
 
 Design and deployment of the network and systems infrastructure for **Strata**, a
 fictional Infrastructure-as-a-Service (IaaS) provider, built for the M1-RSE
@@ -13,8 +13,10 @@ covers everything on the network/systems side: topology, routing, redundancy,
 perimeter and inter-site security, core services, database high availability,
 automation, and the two web applications that sit on top of the infrastructure.
 
-Intrusion detection and the controlled attack-simulation campaign are a
-teammate's deliverable and are documented separately — not covered here.
+Security coverage here is the zone-to-zone ACL policy and the Suricata IDS
+sensor on pfSense's WAN interface — design, deployment, and detection. The
+attack-simulation campaign against this infrastructure (CTF-style) is run
+and documented separately, as its own exercise.
 
 A full written report is in
 [`Strata_Report_Revised.pdf`](Strata_Report_Revised.pdf) (source in
@@ -39,17 +41,27 @@ A full written report is in
 - The two sites interconnect through their respective ISP routers over a
   site-to-site IPsec VPN, terminated at each site's perimeter firewall.
 
+The diagrams above are the full redundant target design. Lab hardware
+couldn't run that many router/switch VMs alongside the customer workloads
+HQ needed to host, so HQ was actually built and validated with a single
+device per tier (redundancy mechanisms — HSRP, LACP, OSPF convergence —
+were separately validated in Packet Tracer against the full dual-device
+topology). The Datacenter's spine-leaf fabric, being containerized rather
+than full VMs, *was* built at full target scale (2 spines, 4 leaves). See
+the report (Section 2.2.1) for both the conceptual and as-built diagrams.
+
 ## Network design
 
 | Layer | Details |
 |---|---|
 | Routing | OSPF area 0 (HQ) / area 1 (Datacenter fabric), point-to-point on every inter-device link |
 | First-hop redundancy | HSRP on every distribution-switch VLAN SVI, active/standby load-shared across DSW1/DSW2 |
-| Link redundancy | LACP EtherChannel between the DSW and DMZ switch pairs |
+| Link redundancy | LACP EtherChannel between the DSW and DMZ switch pairs; active-backup NIC bonding on servers (Ansible) |
 | Fabric | 2-spine / 4-leaf Clos topology, ECMP across spine uplinks |
 | Addressing | `10.0.0.0/16` internal (loopbacks, VLANs, fabric point-to-points), documented end-to-end in `Adressing/` |
 | VLANs | Management (90), IT (100), HR (200), BizOps (300), Data Center (400), DMZ (10) |
-| Perimeter | pfSense firewalls at both sites — stateful zone-to-zone rules, NAT, IPsec VPN termination |
+| Perimeter | Two separate pfSense pairs — F1/F2 at HQ, Firewall-1/Firewall-2 at the Datacenter — stateful zone-to-zone rules, NAT, IPsec VPN termination |
+| Intrusion detection | Suricata (IDS mode, ET Open ruleset) on pfSense's WAN interface, alerts forwarded into the centralized Graylog log |
 
 Device configs live under `Config/Devices/`: `V_Alpha` (Cisco IOS/IOSvl2,
 GNS3/EVE — the full HQ build), `Containerlab` (Cisco IOL + Arista cEOS —

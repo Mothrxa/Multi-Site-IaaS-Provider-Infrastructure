@@ -1,7 +1,0 @@
-- Only IT staff have the right to access the data center (permit everything)
-- All departments get access to the web portal (https:443)
-- allow traffic for dhcp:67, dns:53
-- dmz web server has only access to the internal db (postgresql:5432)
-- no client should have access to the internal network
-- Only IP departement should have access to the branch office
-- limit traffic from dmz/datacenter to the branch office (permit only necessary)
